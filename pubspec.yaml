@@ -1,0 +1,28 @@
+name: talker_sqflite_logger_example
+description: "A new Flutter project."
+publish_to: 'none'
+version: 1.0.0
+
+environment:
+  sdk: '>=3.2.5 <4.0.0'
+
+dependencies:
+  cupertino_icons: ^1.0.2
+  flutter:
+    sdk: flutter
+  logging: ^1.2.0
+  sqflite: ^2.3.0
+  sqflite_common: ^2.5.0+2
+  talker: ^3.2.0
+  talker_sqflite_logger:
+    git:
+      url: git@github.com:mateusfsilva/talker_sqflite_logger.git
+      ref: main
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^3.0.1
+
+flutter:
+  uses-material-design: true
