@@ -11,9 +11,10 @@ dependencies:
   flutter:
     sdk: flutter
   logging: ^1.2.0
-  sqflite: ^2.3.0
-  sqflite_common: ^2.5.0+2
-  talker: ^3.2.0
+  path: ^1.8.3
+  sqflite: ^2.3.2
+  sqflite_common: ^2.5.3
+  talker: ^4.0.0
   talker_sqflite_logger:
     git:
       url: git@github.com:mateusfsilva/talker_sqflite_logger.git

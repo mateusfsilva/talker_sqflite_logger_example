@@ -2,12 +2,11 @@ import 'dart:developer' as developer;
 
 import 'package:flutter/material.dart';
 import 'package:logging/logging.dart' show Level;
+import 'package:path/path.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:sqflite_common/sqflite_logger.dart';
 import 'package:talker/talker.dart';
 import 'package:talker_sqflite_logger/talker_sqflite_logger.dart';
-
-// -k:flutter.frameworkinitialization,flutter.firstframe,flutter.frame,gc
 
 class TalkerObserverImp implements TalkerObserver {
   TalkerObserverImp();
@@ -18,7 +17,7 @@ class TalkerObserverImp implements TalkerObserver {
       err.generateTextMessage(),
       time: err.time,
       level: Level.SEVERE.value,
-      name: err.title,
+      name: err.title ?? err.displayMessage,
       error: err.error,
       stackTrace: err.stackTrace,
     );
@@ -30,19 +29,19 @@ class TalkerObserverImp implements TalkerObserver {
       err.generateTextMessage(),
       time: err.time,
       level: Level.SHOUT.value,
-      name: err.title,
+      name: err.title ?? err.displayMessage,
       error: err.error,
       stackTrace: err.stackTrace,
     );
   }
 
   @override
-  void onLog(TalkerDataInterface log) {
+  void onLog(TalkerData log) {
     // developer.log(
     //   log.generateTextMessage(),
     //   time: log.time,
     //   level: Level.INFO.value,
-    //   name: log.title,
+    //   name: log.title ?? log.displayMessage,
     // );
   }
 }
@@ -103,8 +102,9 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   late Database _db;
+  late TalkerSqfliteDatabaseFactory _factory;
 
-  Future<String> get _path async => '${await getDatabasesPath()}/demo.db';
+  Future<String> get _path async => join(await getDatabasesPath(), 'demo.db');
 
   @override
   Widget build(BuildContext context) => Scaffold(
@@ -165,12 +165,12 @@ class _MyHomePageState extends State<MyHomePage> {
     SqfliteDatabaseFactoryLoggerType? type,
     OpenDatabaseOptions? options,
   }) async {
-    final factory = TalkerSqfliteDatabaseFactory(
+    _factory = TalkerSqfliteDatabaseFactory(
       talker: widget._talker,
       settings: settings,
     );
 
-    _db = await factory.openDatabase(
+    _db = await _factory.openDatabase(
       path: await _path,
       options: options,
       type: type,
@@ -181,10 +181,8 @@ class _MyHomePageState extends State<MyHomePage> {
     await _db.close();
   }
 
-  /// It should call the deleteDatabase method (sqflite_logger.dart line 788),
-  /// but it never does.
   Future<void> _deleteDatabase() async {
-    await deleteDatabase(await _path);
+    await _factory.deleteDatabase(await _path);
   }
 
   Future<void> _button01onPressed() async {

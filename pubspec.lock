@@ -124,7 +124,7 @@ packages:
     source: hosted
     version: "1.10.0"
   path:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: path
       sha256: "8829d8a55c13fc0e37127c29fedf290c102f4e40ae94ada574091fe0ff96c917"
@@ -148,18 +148,18 @@ packages:
     dependency: "direct main"
     description:
       name: sqflite
-      sha256: "591f1602816e9c31377d5f008c2d9ef7b8aca8941c3f89cc5fd9d84da0c38a9a"
+      sha256: a9016f495c927cb90557c909ff26a6d92d9bd54fc42ba92e19d4e79d61e798c6
       url: "https://pub.dev"
     source: hosted
-    version: "2.3.0"
+    version: "2.3.2"
   sqflite_common:
     dependency: "direct main"
     description:
       name: sqflite_common
-      sha256: bb4738f15b23352822f4c42a531677e5c6f522e079461fd240ead29d8d8a54a6
+      sha256: "28d8c66baee4968519fb8bd6cdbedad982d6e53359091f0b74544a9f32ec72d5"
       url: "https://pub.dev"
     source: hosted
-    version: "2.5.0+2"
+    version: "2.5.3"
   stack_trace:
     dependency: transitive
     description:
@@ -196,24 +196,24 @@ packages:
     dependency: "direct main"
     description:
       name: talker
-      sha256: "1e4351253560219859a8e757f5b8dbd266d5c289a50dd90d12da4f3041184392"
+      sha256: "2cabd27c08f2036f62c5cd9588579484c53de5273677563b69ca3a83bac6aa37"
       url: "https://pub.dev"
     source: hosted
-    version: "3.2.0"
+    version: "4.0.0"
   talker_logger:
     dependency: transitive
     description:
       name: talker_logger
-      sha256: "3f8d051e5821c4aa3c27efe8204829dde128724cbd0294ae3cee76b097cf2cbb"
+      sha256: "426d439c0232cad96fc0291cfcc5fe83c8429a4befc00c1bbb8cd923c7e23543"
       url: "https://pub.dev"
     source: hosted
-    version: "3.1.0"
+    version: "4.0.0"
   talker_sqflite_logger:
     dependency: "direct main"
     description:
       path: "."
       ref: main
-      resolved-ref: edc0edd78156003a179d40fac233b737986813b9
+      resolved-ref: f16b4089c63c8a5fb4cb55f1701546bb1b2884c4
       url: "git@github.com:mateusfsilva/talker_sqflite_logger.git"
     source: git
     version: "0.1.0"
